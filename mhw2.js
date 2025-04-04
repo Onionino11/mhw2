@@ -97,8 +97,12 @@ const languageSelectorIcon = document.querySelector('#nav-freccia');
 
 function displaylanguagemenu() {
     const languageMenu = document.querySelector('.language-menu');
-    languageMenu.classList.remove('hidden');
+    if (languageMenu.classList.contains('hidden')) {
+        languageMenu.classList.remove('hidden');
+    }
+    else hidelanguagemenu();
 }
+
 function hidelanguagemenu() {
     const languageMenu = document.querySelector('.language-menu');
     languageMenu.classList.add('hidden');
