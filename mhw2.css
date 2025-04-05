@@ -6,6 +6,9 @@ body {
     max-width: 1200px;
     margin: 0 auto;
 }
+.hidden {
+    display: none !important;
+}
 
 a {
     color:rgb(238, 127, 1);
