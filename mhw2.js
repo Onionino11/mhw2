@@ -123,9 +123,64 @@ languageSelector.addEventListener('blur', () => hide('.language-menu'));
 const navCampanella = document.querySelector('#nav-campanella');
 
 
-
-
 navCampanella.addEventListener('click', () => display('#letterbox'));
 navCampanella.addEventListener('blur', () => hide('#letterbox'));
+
+
+const panelItems = document.querySelectorAll('.panel-item');
+
+
+panelItems.forEach(panelItem => {
+    const nome = panelItem.dataset.nome; 
+    const descrizione = panelItem.dataset.descrizione; 
+    const prezzo = panelItem.dataset.prezzo; 
+
+    if(panelItem.dataset.bestseller == false) {
+        const bestsellerElement = panelItem.querySelector('.bestseller');
+        bestsellerElement.remove(); 
+    }
+
+    if(panelItem.dataset.burger == false) {
+        const burgerElement = panelItem.querySelector('.burger');
+        burgerElement.remove(); 
+    }
+
+    if(panelItem.dataset.chips == false) {
+        const chipsElement = panelItem.querySelector('.chips');
+        chipsElement.remove(); 
+    }
+
+    if(panelItem.dataset.drink == false) {
+        const drinkElement = panelItem.querySelector('.drink');
+        drinkElement.remove(); 
+    }
+
+    const immagineElement = panelItem.querySelector('.item-img');
+    if (immagineElement) {
+        immagineElement.src = panelItem.dataset.immagine; // Aggiorna l'immagine
+        
+    }
+
+    // Modifica il contenuto del titolo
+    const titoloElement = panelItem.querySelector('.item-titolo .item-category');
+    if (titoloElement) {
+        titoloElement.textContent = nome; // Aggiorna il nome
+    }
+
+    // Modifica il contenuto della descrizione
+    const descrizioneElement = panelItem.querySelector('.item-description');
+    if (descrizioneElement) {
+        descrizioneElement.lastChild.textContent = descrizione; // Aggiorna la descrizione
+    }
+
+    // Modifica il contenuto del prezzo
+    const prezzoElement = panelItem.querySelector('.item-button .N-Prodotti');
+    if (prezzoElement) {
+        prezzoElement.textContent = prezzo +'€'; // Aggiorna il prezzo
+    }
+});
+
+
+
 
 
