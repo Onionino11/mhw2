@@ -95,23 +95,40 @@ promoScopri.addEventListener('click', showPopup);
 const languageSelector = document.querySelector('#nav-flag');
 const languageSelectorIcon = document.querySelector('#nav-freccia');
 
-function displaylanguagemenu() {
-    const languageMenu = document.querySelector('.language-menu');
-    if (languageMenu.classList.contains('hidden')) {
-        languageMenu.classList.remove('hidden');
+function display(selector) {
+    const element = document.querySelector(selector);
+    if (element) {
+        if (element.classList.contains('hidden')) {
+            element.classList.remove('hidden');
+        } else {
+            element.classList.add('hidden');
+        }
+    } else {
+        console.error(`Elemento con selettore "${selector}" non trovato.`);
     }
-    else hidelanguagemenu();
 }
 
-function hidelanguagemenu() {
-    const languageMenu = document.querySelector('.language-menu');
-    languageMenu.classList.add('hidden');
+function hide(selector) {
+    const element = document.querySelector(selector);
+    if (element) {
+        element.classList.add('hidden');
+    } else {
+        console.error(`Elemento con selettore "${selector}" non trovato.`);
+    }
 }
 
-languageSelector.addEventListener('click', displaylanguagemenu );
-languageSelectorIcon.addEventListener('click', displaylanguagemenu );
+languageSelector.addEventListener('click', () => display('.language-menu'));
+languageSelectorIcon.addEventListener('click', () => display('.language-menu'));
 
-languageSelector.addEventListener('blur', hidelanguagemenu );
-languageSelectorIcon.addEventListener('blur', hidelanguagemenu );
+languageSelector.addEventListener('blur', () => hide('.language-menu'));
+languageSelectorIcon.addEventListener('blur', () => hide('.language-menu'));
+
+const navCampanella = document.querySelector('#nav-campanella');
+
+
+
+
+navCampanella.addEventListener('click', () => display('#letterbox'));
+navCampanella.addEventListener('blur', () => hide('#letterbox'));
 
 
