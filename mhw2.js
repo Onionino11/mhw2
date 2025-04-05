@@ -93,7 +93,6 @@ function showPopup() {
 promoScopri.addEventListener('click', showPopup);
 
 const languageSelector = document.querySelector('#nav-flag');
-const languageSelectorIcon = document.querySelector('#nav-freccia');
 
 function display(selector) {
     const element = document.querySelector(selector);
@@ -118,10 +117,8 @@ function hide(selector) {
 }
 
 languageSelector.addEventListener('click', () => display('.language-menu'));
-languageSelectorIcon.addEventListener('click', () => display('.language-menu'));
-
 languageSelector.addEventListener('blur', () => hide('.language-menu'));
-languageSelectorIcon.addEventListener('blur', () => hide('.language-menu'));
+
 
 const navCampanella = document.querySelector('#nav-campanella');
 
