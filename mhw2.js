@@ -1,4 +1,6 @@
 const promoScopri = document.querySelector('#promo-scopri');
+const popup = document.querySelector('#modal-view');
+    
 const element1 = {
     link: 'https://static.xmenu.it/api/img/resize?image_uri=uploads%2Fpromotions%2F2195%2FIMG_7744.jpeg&w=800',
     validità: 'Tutti i Venerdì',
@@ -16,8 +18,8 @@ const element2 = {
 const array = [element1, element2];
 
 function showPopup() {
-    const popup = document.createElement('div');
-    popup.classList.add('popup-container');
+    popup.classList.remove('hidden');
+    
 
     const banneroffert = document.createElement('div');
     banneroffert.classList.add('popup-content');
@@ -32,10 +34,13 @@ function showPopup() {
     closeIcon.src = 'xbianca.svg';
     closeIcon.classList.add('close-icon');
     closeButton.appendChild(closeIcon);
-    closeButton.addEventListener('click', () => {
-        document.body.removeChild(popup);
+    closeButton.addEventListener('click', removePopup);
+
+    function removePopup() {
+        popup.removeChild(banneroffert);
+        popup.classList.add('hidden');
         promoScopri.addEventListener('click', showPopup);
-    });
+    }
 
     banneroffertTitle.appendChild(closeButton);
     banneroffert.appendChild(banneroffertTitle);
@@ -88,14 +93,50 @@ function showPopup() {
     document.body.appendChild(popup);
 
     promoScopri.removeEventListener('click', showPopup);
+
 }
+
+
 
 promoScopri.addEventListener('click', showPopup);
 
 const languageSelector = document.querySelector('#nav-flag');
 
-function display(selector) {
-    const element = document.querySelector(selector);
+function displayLanguageMenu() {
+    const element = document.querySelector('#language-menu');
+    if (element) {
+        if (element.classList.contains('hidden')) {
+            element.classList.remove('hidden');
+            console.log('Menu lingua mostrato');
+        } else {
+            element.classList.add('hidden');
+            console.log('Menu lingua nascosto');
+        }
+    } else {
+        console.error(`Elemento con selettore "${selector}" non trovato.`);
+    }
+}
+
+function hideLanguageMenu() {
+    const element = document.querySelector('#language-menu');
+    if (element) {
+        element.classList.add('hidden');
+        console.log('Menu lingua nascosto');
+    } else {
+        console.error(`Elemento con selettore "${selector}" non trovato.`);
+    }
+}
+
+
+
+languageSelector.addEventListener('click',  displayLanguageMenu);
+languageSelector.addEventListener('blur', hideLanguageMenu);
+
+
+const navCampanella = document.querySelector('#nav-campanella');
+
+function displayletterbox() {
+    const element = document.querySelector('#letterbox');
     if (element) {
         if (element.classList.contains('hidden')) {
             element.classList.remove('hidden');
@@ -107,8 +148,8 @@ function display(selector) {
     }
 }
 
-function hide(selector) {
-    const element = document.querySelector(selector);
+function hideletterbox() {
+    const element = document.querySelector('#letterbox');
     if (element) {
         element.classList.add('hidden');
     } else {
@@ -116,71 +157,64 @@ function hide(selector) {
     }
 }
 
-languageSelector.addEventListener('click', () => display('.language-menu'));
-languageSelector.addEventListener('blur', () => hide('.language-menu'));
-
-
-const navCampanella = document.querySelector('#nav-campanella');
-
-
-navCampanella.addEventListener('click', () => display('#letterbox'));
-navCampanella.addEventListener('blur', () => hide('#letterbox'));
+navCampanella.addEventListener('click', displayletterbox);
+navCampanella.addEventListener('blur',  hideletterbox);
 
 
 const panelItems = document.querySelectorAll('.panel-item');
 
+for (let i = 0; i < panelItems.length; i++) {
+    const panelItem = panelItems[i];
 
-panelItems.forEach(panelItem => {
-    const nome = panelItem.dataset.nome; 
-    const descrizione = panelItem.dataset.descrizione; 
-    const prezzo = panelItem.dataset.prezzo; 
+    const nome = panelItem.dataset.nome;
+    const descrizione = panelItem.dataset.descrizione;
+    const prezzo = panelItem.dataset.prezzo;
 
-    if(panelItem.dataset.bestseller == false) {
+    if (panelItem.dataset.bestseller == 0) {
         const bestsellerElement = panelItem.querySelector('.bestseller');
-        bestsellerElement.remove(); 
+        if (bestsellerElement) {
+            bestsellerElement.remove();
+        }
     }
 
-    if(panelItem.dataset.burger == false) {
+    if (panelItem.dataset.burger == 0) {
         const burgerElement = panelItem.querySelector('.burger');
-        burgerElement.remove(); 
+        if (burgerElement) {
+            burgerElement.remove();
+        }
     }
 
-    if(panelItem.dataset.chips == false) {
+    if (panelItem.dataset.chips == 0) {
         const chipsElement = panelItem.querySelector('.chips');
-        chipsElement.remove(); 
+        if (chipsElement) {
+            chipsElement.remove();
+        }
     }
 
-    if(panelItem.dataset.drink == false) {
+    if (panelItem.dataset.drink == 0) {
         const drinkElement = panelItem.querySelector('.drink');
-        drinkElement.remove(); 
+        if (drinkElement) {
+            drinkElement.remove();
+        }
     }
 
     const immagineElement = panelItem.querySelector('.item-img');
     if (immagineElement) {
-        immagineElement.src = panelItem.dataset.immagine; // Aggiorna l'immagine
-        
+        immagineElement.src = panelItem.dataset.immagine;
     }
 
-    // Modifica il contenuto del titolo
     const titoloElement = panelItem.querySelector('.item-titolo .item-category');
     if (titoloElement) {
-        titoloElement.textContent = nome; // Aggiorna il nome
+        titoloElement.textContent = nome;
     }
 
-    // Modifica il contenuto della descrizione
     const descrizioneElement = panelItem.querySelector('.item-description');
     if (descrizioneElement) {
-        descrizioneElement.lastChild.textContent = descrizione; // Aggiorna la descrizione
+        descrizioneElement.lastChild.textContent = descrizione;
     }
 
-    // Modifica il contenuto del prezzo
     const prezzoElement = panelItem.querySelector('.item-button .N-Prodotti');
     if (prezzoElement) {
-        prezzoElement.textContent = prezzo +'€'; // Aggiorna il prezzo
+        prezzoElement.textContent = prezzo + '€';
     }
-});
-
-
-
-
-
+}
