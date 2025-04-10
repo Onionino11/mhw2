@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="mhw2.css">
     <link rel="shortcut icon" href="https://static.xmenu.it/assets-dist/common/images/favicon.6052af7795a6962b.ico">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <script src="Data.js"></script>
     <script src="mhw2.js" defer></script>
 </head>
 
@@ -34,12 +35,14 @@
                 <input class="nav-input" type="text" placeholder="Password">
                 <button id="nav-login">Login</button>
             </div>
-            <a class="linknero" id="nav-flag" href="#" data-nomefiglio='.language-menu'> <img src="Italy-Flag.256.png">
+            <a class="linknero" id="nav-flag" href="#" data-linguaattuale="Italiano"> <img src="Flag_of_Italy.svg">
                 <span id="nav-freccia">▼</span>
             </a>
             <div id="language-menu" class="hidden">
-                <a class="lingua" href="#"><img src="Italy-Flag.256.png"> Italiano</a>
-                <a class="lingua" href="#"><img src="Italy-Flag.256.png"> Italiano</a>
+                <a id="Italiano" class="lingua" data-value="Italiano" href="#"><img src="Flag_of_Italy.svg">
+                    Italiano</a>
+                <a id="English" class="lingua" data-value="English" href="#"><img src="Flag_of_the_United_Kingdom.svg">
+                    English</a>
             </div>
 
             <div id="nav-campanella2"><a href="#"><img class="icon" src="campanella.svg"></a></div>
@@ -91,80 +94,7 @@
         <section id="panel">
             <div id="panel-heading"> <img class="panel-icon" class="icon" src="tag.png"> Menu'</div>
             <div id="panel-body">
-                <div class="panel-item boxed" data-prodotto="1" data-immagine="Classiche.jpg" data-Nome="Classiche"
-                    data-bestseller=0 data-burger=0 data-chips=1 data-drink=0
-                    data-descrizione="Patatine fritte buone mayonese e ketchup" data-prezzo=2.50>
 
-                    <img class="item-img" src="default.png">
-                    <div class="item-body">
-                        <div class="item-description">
-                            <h2 class="item-titolo">
-                                <a class="item-category" href="#">NOME</a>
-                                <div class="opzionali">
-                                    <div class="bestseller">Best seller </div>
-                                    <img class="burger icon" src="burger.svg">
-                                    <img class="chips icon" src="chips.svg">
-                                    <img class='drink icon' src="drink.svg">
-                                </div>
-                            </h2>
-                            Breve descrizione o frase ad effetto
-                        </div>
-                        <div class="item-button">
-                            <a href="#"><strong class="N-Prodotti"> N prodotti</strong></a>
-                            <div class="square">+</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-item boxed" data-prodotto="4" data-immagine="Classico.jpeg" data-Nome="Menu Classico"
-                    data-bestseller=1 data-burger=1 data-chips=1 data-drink=1
-                    data-descrizione="Pane Artigianale / Hamburger a Scelta / Formaggio cheddar / Lattuga / Pomodoro / Salsa a scelta" data-prezzo=10.50>
-
-                    <img class="item-img" src="default.png">
-                    <div class="item-body">
-                        <div class="item-description">
-                            <h2 class="item-titolo">
-                                <a class="item-category" href="#">NOME</a>
-                                <div class="opzionali">
-                                    <div class="bestseller">Best seller </div>
-                                    <img class="burger icon" src="burger.svg">
-                                    <img class="chips icon" src="chips.svg">
-                                    <img class='drink icon' src="drink.svg">
-                                </div>
-                            </h2>
-                            Breve descrizione o frase ad effetto
-                        </div>
-                        <div class="item-button">
-                            <a href="#"><strong class="N-Prodotti"> N prodotti</strong></a>
-                            <div class="square">+</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-item boxed" data-prodotto="2" data-immagine="Pistacchioso.jpeg" data-Nome="Pistacchioso"
-                    data-bestseller=1 data-burger=1 data-chips=0 data-drink=0
-                    data-descrizione="Pane fresco Artigianale / Hamburger di Manzo Macina Maluburger / Pesto Di Pistacchio / Pomodorino / Scaglie Di Grana / Mortadella" data-prezzo=8.90>
-
-                    <img class="item-img" src="default.png">
-                    <div class="item-body">
-                        <div class="item-description">
-                            <h2 class="item-titolo">
-                                <a class="item-category" href="#">NOME</a>
-                                <div class="opzionali">
-                                    <div class="bestseller">Best seller </div>
-                                    <img class="burger icon" src="burger.svg">
-                                    <img class="chips icon" src="chips.svg">
-                                    <img class='drink icon' src="drink.svg">
-                                </div>
-                            </h2>
-                            Breve descrizione o frase ad effetto
-                        </div>
-                        <div class="item-button">
-                            <a href="#"><strong class="N-Prodotti"> N prodotti</strong></a>
-                            <div class="square">+</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
             </div>
 
         </section>

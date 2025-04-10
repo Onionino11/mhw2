@@ -397,10 +397,13 @@ img {
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
+    flex-grow: 1;
     align-items: center;
-    padding: 5px 1px 5px 0px;
     position: absolute;
-    border: 1px solid black;
+    width: 150px;
+    height: auto;
+    padding: 15px 0px;
+    border: 1px solid lightgray;
     border-radius: 10px;
     top: 45px;
     right: 2px;
@@ -416,12 +419,22 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 90%;
     padding: 5px;
     cursor: pointer;
-    background-color:  rgb(51, 0, 0);
+    background-color: white;
     height: 20px;
+    color: black;
+}
+.lingua:hover{
+    background-color: rgb(51, 0, 0);
     color: white;
 }
+.lingua.linguaattuale{
+    background-color: rgb(51, 0, 0);
+    color: white;
+}
+
 #nav-freccia {
     padding-top: 10px;
     padding-left: 5px;
@@ -791,7 +804,7 @@ img {
     margin-bottom: 10px;
 }
 
-.offerta-avability {
+.offerta-disponibile {
     font-size: 14px;
     display: flex;
     align-items: center;

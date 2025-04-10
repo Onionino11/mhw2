@@ -1,22 +1,6 @@
 const promoScopri = document.querySelector('#promo-scopri');
 const popup = document.querySelector('#modal-view');
     
-const element1 = {
-    link: 'https://static.xmenu.it/api/img/resize?image_uri=uploads%2Fpromotions%2F2195%2FIMG_7744.jpeg&w=800',
-    validità: 'Tutti i Venerdì',
-    Titolo: 'Offerta 1',
-    text: 'Torna la Super BFF del Venerdì! Ordinando due menù, il PANINO meno caro lo paghi la metà!Lo sconto verrà applicato in cassa.',
-    Avabilty: 'Tutti gli ordni'
-};
-const element2 = {
-    link: 'https://static.xmenu.it/api/img/resize?image_uri=uploads%2Fpromotions%2F830%2FWhatsApp+Image+2022-10-10+at+12.45.20.jpeg&w=800',
-    validità: 'Tutti i Giovedì',
-    Titolo: 'Offerta 2',
-    text: 'Tutti i Giovedì consegna a domicilio "AGGRATIS"Ordine minimo 10€',
-    Avabilty: 'Consegna a domicilio'
-};
-const array = [element1, element2];
-
 function showPopup() {
     popup.classList.remove('hidden');
     
@@ -44,50 +28,52 @@ function showPopup() {
 
     banneroffertTitle.appendChild(closeButton);
     banneroffert.appendChild(banneroffertTitle);
+    
+    const offerte= data.offerte;
 
-    for (let index = 0; index < array.length; index++) {
-        const element = array[index];
-        const offertelement = document.createElement('div');
-        offertelement.classList.add('offerta-element');
-        const offertelementImg = document.createElement('img');
-        offertelementImg.src = element.link;
-        offertelementImg.classList.add('offerta-img');
-        offertelement.appendChild(offertelementImg);
+    for (let index = 0; index < offerte.length; index++) {
+        const element = offerte[index];
+        const offertElement = document.createElement('div');
+        offertElement.classList.add('offerta-element');
+        const offertElementImg = document.createElement('img');
+        offertElementImg.src = element.link;
+        offertElementImg.classList.add('offerta-img');
+        offertElement.appendChild(offertElementImg);
 
-        const offertelementValidity = document.createElement('div');
-        offertelementValidity.classList.add('offerta-validity');
-        const offertelementValidityText = document.createElement('p');
-        offertelementValidityText.classList.add('offerta-validity-text');
-        offertelementValidityText.textContent = element.validità;
-        offertelementValidity.appendChild(offertelementValidityText);
-        offertelement.appendChild(offertelementValidity);
+        const offertElementValidity = document.createElement('div');
+        offertElementValidity.classList.add('offerta-validity');
+        const offertElementValidityText = document.createElement('p');
+        offertElementValidityText.classList.add('offerta-validity-text');
+        offertElementValidityText.textContent = element.validita;
+        offertElementValidity.appendChild(offertElementValidityText);
+        offertElement.appendChild(offertElementValidity);
 
-        const offertelementTitle = document.createElement('h3');
-        offertelementTitle.textContent = element.Titolo;
-        offertelementTitle.classList.add('offerta-title');
-        offertelement.appendChild(offertelementTitle);
+        const offertElementTitle = document.createElement('h3');
+        offertElementTitle.textContent = element.Titolo;
+        offertElementTitle.classList.add('offerta-title');
+        offertElement.appendChild(offertElementTitle);
 
-        const offertelementText = document.createElement('p');
-        offertelementText.textContent = element.text;
-        offertelementText.classList.add('offerta-text');
-        offertelement.appendChild(offertelementText);
+        const offertElementText = document.createElement('p');
+        offertElementText.textContent = element.text;
+        offertElementText.classList.add('offerta-text');
+        offertElement.appendChild(offertElementText);
 
-        const offertelementAvability = document.createElement('div');
-        offertelementAvability.classList.add('offerta-avability');
+        const offertElementdisponibile = document.createElement('div');
+        offertElementdisponibile.classList.add('offerta-disponibile');
 
-        const offertelementAvabilityText = document.createElement('p');
-        offertelementAvabilityText.textContent = 'Disponibile per:';
-        offertelementAvability.appendChild(offertelementAvabilityText);
+        const offertElementdisponibileText = document.createElement('p');
+        offertElementdisponibileText.textContent = 'Disponibile per:';
+        offertElementdisponibile.appendChild(offertElementdisponibileText);
 
-        const offertelementAvabilityTag = document.createElement('div');
-        offertelementAvabilityTag.classList.add('bestseller');
-        const offertelementAvabilityTagText = document.createElement('p');
-        offertelementAvabilityTagText.textContent = element.Avabilty;
-        offertelementAvabilityTag.appendChild(offertelementAvabilityTagText);
-        offertelementAvability.appendChild(offertelementAvabilityTag);
-        offertelement.appendChild(offertelementAvability);
+        const offertElementdisponibileTag = document.createElement('div');
+        offertElementdisponibileTag.classList.add('bestseller');
+        const offertElementdisponibileTagText = document.createElement('p');
+        offertElementdisponibileTagText.textContent = element.disponibile;
+        offertElementdisponibileTag.appendChild(offertElementdisponibileTagText);
+        offertElementdisponibile.appendChild(offertElementdisponibileTag);
+        offertElement.appendChild(offertElementdisponibile);
 
-        banneroffert.appendChild(offertelement);
+        banneroffert.appendChild(offertElement);
     }
     popup.appendChild(banneroffert);
     document.body.appendChild(popup);
@@ -96,45 +82,88 @@ function showPopup() {
 
 }
 
-
-
 promoScopri.addEventListener('click', showPopup);
 
+
+
+
 const languageSelector = document.querySelector('#nav-flag');
+const menu = document.querySelector('#language-menu');
 
 function displayLanguageMenu() {
     const element = document.querySelector('#language-menu');
-    if (element) {
-        if (element.classList.contains('hidden')) {
-            element.classList.remove('hidden');
-            console.log('Menu lingua mostrato');
-        } else {
-            element.classList.add('hidden');
-            console.log('Menu lingua nascosto');
-        }
+    if (element.classList.contains('hidden')) {
+        element.classList.remove('hidden');
+        console.log('Menu lingua mostrato');
     } else {
-        console.error(`Elemento con selettore "${selector}" non trovato.`);
+        element.classList.add('hidden');
+        console.log('Menu lingua nascosto da click');
     }
 }
 
 function hideLanguageMenu() {
     const element = document.querySelector('#language-menu');
-    if (element) {
-        element.classList.add('hidden');
-        console.log('Menu lingua nascosto');
-    } else {
-        console.error(`Elemento con selettore "${selector}" non trovato.`);
+    element.classList.add('hidden');
+    console.log('Menu lingua nascosto da blur');
+    
+
+}
+languageSelector.addEventListener('click',  displayLanguageMenu);
+languageSelector.addEventListener('blur', hideLanguageMenu);
+
+menu.addEventListener('mousedown', preventDefault);
+
+function preventDefault(event){
+    event.preventDefault();
+}
+
+
+
+let linguaAttuale = languageSelector.dataset.linguaattuale;
+
+
+function setLinguaAttuale() {
+    
+    if (linguaAttuale === 'Italiano') {
+        let linguaAttiva = menu.querySelector('#Italiano');
+        linguaAttiva.classList.add('linguaattuale');
+        languageSelector.querySelector('img').src = 'Flag_of_Italy.svg';
+    } else if (linguaAttuale === 'English') {
+        let linguaAttiva = menu.querySelector('#English');
+        linguaAttiva.classList.add('linguaattuale');
+        languageSelector.querySelector('img').src = 'Flag_of_the_United_Kingdom.svg';
+    }
+}
+setLinguaAttuale();
+
+const lingue = menu.querySelectorAll('.lingua'); 
+
+for (const lingua of lingue) {
+    lingua.addEventListener('click', cambiaLingua);
+    console.log(lingua.dataset.value);
+}
+
+function cambiaLingua(event) {
+    const linguaSelezionata = event.currentTarget.dataset.value; 
+    console.log("cambiaLingua:", linguaSelezionata);
+    let linguaAttiva = menu.querySelector('#'+linguaAttuale);
+    linguaAttiva.classList.remove('linguaattuale');
+
+    if (linguaSelezionata === 'Italiano') {
+        linguaAttuale = 'Italiano';
+        console.log(linguaAttuale);
+        setLinguaAttuale();
+    } else if (linguaSelezionata === 'English') {
+        linguaAttuale = 'English';
+        console.log(linguaAttuale);
+        setLinguaAttuale();
     }
 }
 
 
 
-languageSelector.addEventListener('click',  displayLanguageMenu);
-languageSelector.addEventListener('blur', hideLanguageMenu);
-
 
 const navCampanella = document.querySelector('#nav-campanella');
-
 function displayletterbox() {
     const element = document.querySelector('#letterbox');
     if (element) {
@@ -156,65 +185,110 @@ function hideletterbox() {
         console.error(`Elemento con selettore "${selector}" non trovato.`);
     }
 }
-
 navCampanella.addEventListener('click', displayletterbox);
 navCampanella.addEventListener('blur',  hideletterbox);
 
 
-const panelItems = document.querySelectorAll('.panel-item');
+function createCategoryItem(elemento) {
+    const panelItem = document.createElement('div');
+    panelItem.classList.add('panel-item', 'boxed');
+    panelItem.dataset.prodotto = 0;
+    panelItem.dataset.immagine = elemento.immagine;
+    panelItem.dataset.nome = elemento.nome;
+    panelItem.dataset.bestseller = elemento.bestseller ? 1 : 0;
+    panelItem.dataset.burger = elemento.burger ? 1 : 0;
+    panelItem.dataset.chips = elemento.chips ? 1 : 0;
+    panelItem.dataset.drink = elemento.drink ? 1 : 0;
+    panelItem.dataset.descrizione = elemento.descrizione;
+    panelItem.dataset.nProdotti = elemento.prodotti;
 
-for (let i = 0; i < panelItems.length; i++) {
-    const panelItem = panelItems[i];
 
-    const nome = panelItem.dataset.nome;
-    const descrizione = panelItem.dataset.descrizione;
-    const prezzo = panelItem.dataset.prezzo;
+    const img = document.createElement('img');
+    img.classList.add('item-img');
+    img.src = elemento.immagine || 'default.png';
+    panelItem.appendChild(img);
 
-    if (panelItem.dataset.bestseller == 0) {
-        const bestsellerElement = panelItem.querySelector('.bestseller');
-        if (bestsellerElement) {
-            bestsellerElement.remove();
-        }
+
+    const itemBody = document.createElement('div');
+    itemBody.classList.add('item-body');
+
+
+    const itemDescription = document.createElement('div');
+    itemDescription.classList.add('item-description');
+
+    const itemTitle = document.createElement('h2');
+    itemTitle.classList.add('item-titolo');
+
+    const itemCategory = document.createElement('a');
+    itemCategory.classList.add('item-category');
+    itemCategory.href = '#';
+    itemCategory.textContent = elemento.nome;
+
+    const opzionali = document.createElement('div');
+    opzionali.classList.add('opzionali');
+
+    if (elemento.bestseller) {
+        const bestseller = document.createElement('div');
+        bestseller.classList.add('bestseller');
+        bestseller.textContent = 'Best seller';
+        opzionali.appendChild(bestseller);
     }
 
-    if (panelItem.dataset.burger == 0) {
-        const burgerElement = panelItem.querySelector('.burger');
-        if (burgerElement) {
-            burgerElement.remove();
-        }
+    if (elemento.burger) {
+        const burgerIcon = document.createElement('img');
+        burgerIcon.classList.add('burger', 'icon');
+        burgerIcon.src = 'burger.svg';
+        opzionali.appendChild(burgerIcon);
     }
 
-    if (panelItem.dataset.chips == 0) {
-        const chipsElement = panelItem.querySelector('.chips');
-        if (chipsElement) {
-            chipsElement.remove();
-        }
+    if (elemento.chips) {
+        const chipsIcon = document.createElement('img');
+        chipsIcon.classList.add('chips', 'icon');
+        chipsIcon.src = 'chips.svg';
+        opzionali.appendChild(chipsIcon);
     }
 
-    if (panelItem.dataset.drink == 0) {
-        const drinkElement = panelItem.querySelector('.drink');
-        if (drinkElement) {
-            drinkElement.remove();
-        }
+    if (elemento.drink) {
+        const drinkIcon = document.createElement('img');
+        drinkIcon.classList.add('drink', 'icon');
+        drinkIcon.src = 'drink.svg';
+        opzionali.appendChild(drinkIcon);
     }
 
-    const immagineElement = panelItem.querySelector('.item-img');
-    if (immagineElement) {
-        immagineElement.src = panelItem.dataset.immagine;
-    }
+    itemTitle.appendChild(itemCategory);
+    itemTitle.appendChild(opzionali);
+    itemDescription.appendChild(itemTitle);
+    itemDescription.appendChild(document.createTextNode(elemento.descrizione));
+    itemBody.appendChild(itemDescription);
 
-    const titoloElement = panelItem.querySelector('.item-titolo .item-category');
-    if (titoloElement) {
-        titoloElement.textContent = nome;
-    }
 
-    const descrizioneElement = panelItem.querySelector('.item-description');
-    if (descrizioneElement) {
-        descrizioneElement.lastChild.textContent = descrizione;
-    }
+    const itemButton = document.createElement('div');
+    itemButton.classList.add('item-button');
 
-    const prezzoElement = panelItem.querySelector('.item-button .N-Prodotti');
-    if (prezzoElement) {
-        prezzoElement.textContent = prezzo + '€';
-    }
+    const prodottiLink = document.createElement('a');
+    prodottiLink.href = '#';
+
+    const prodottiText = document.createElement('strong');
+    prodottiText.classList.add('N-Prodotti');
+    prodottiText.textContent = elemento.prodotti + ' prodotti';
+    prodottiLink.appendChild(prodottiText);
+
+    const square = document.createElement('div');
+    square.classList.add('square');
+    square.textContent = '>';
+
+    itemButton.appendChild(prodottiLink);
+    itemButton.appendChild(square);
+    itemBody.appendChild(itemButton);
+
+    panelItem.appendChild(itemBody);
+
+    return panelItem;
+}
+
+
+const panelBody = document.querySelector('#panel-body');
+for (const elemento of data.categorie) {
+    const panelItem = createCategoryItem(elemento);
+    panelBody.appendChild(panelItem);
 }
