@@ -20,7 +20,7 @@ let data = {
         {
             nome: "PER INIZIARE",
             descrizione: "Come fai a non farti tentare? I migliori prodotti fritti in olio di semi di girasole Altoleico",
-            immagine: "default.png" ,
+            immagine: "Classiche.jpg" ,
             prodotti: 9,
             burger: false,
             chips: false,
@@ -29,7 +29,7 @@ let data = {
         {
             nome: "MALU PROMO MENU'",
             descrizione: "MENU COMPLETO BURGER CONTORNO E BEVANDA'",
-            immagine: "default.png" ,
+            immagine: "Classico.jpeg" ,
             prodotti: 14,
             burger: true,
             chips: true,
@@ -39,7 +39,7 @@ let data = {
         {
             nome: "MALU BURGER (SOLO PANINO)",
             descrizione: "Piccolo = 100gr / Medio = 180gr / Malu = Tutto doppio",
-            immagine: "default.png",
+            immagine: "Pistacchioso.jpeg",
             prodotti: 16,
             burger: true,
             chips: false,
